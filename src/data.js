@@ -13,6 +13,9 @@ export const config = {
   form: { title: '新建证件档案', collection: 'documents', fields: [
     ['name', '证件名称', '身份证'], ['category', '类别', '身份类'], ['holder', '持有人', '林小满'], ['number', '证件号码', '110***********'], ['issued', '签发日期', '2023-01-01', 'date'], ['expires', '有效期至', '2033-01-01', 'date'], ['issuer', '发证机关', 'XX市公安局'], ['location', '存放位置', '保险柜'], ['copyLocation', '复印件位置', '云盘 / 家庭共享'], ['notes', '备注', ''],
   ]},
+  borrowForm: { title: '新建外借', collection: 'usages', actionLabel: '新建外借', returnLabel: '归还', fields: [
+    ['purpose', '用途', '办理银行业务'], ['borrower', '经办人', '林小满'], ['dueDate', '预计归还日期', '', 'date'], ['note', '备注', '选填'],
+  ]},
   categories: ['身份类', '资产类', '合同类', '医疗类', '教育类', '其他'],
   achievements: ['首次建档', '证件齐全', '零过期遗忘', '续办及时', '家庭档案大师', '收纳有序', '安全存档', '保险规划师', '使用有迹', '家庭守护者', '资料无忧', '档案领航员']
 }
@@ -22,7 +25,7 @@ export const seed = {
     { id: 'doc-2', name: '家庭医疗保险合同', category: '医疗类', holder: '林家', number: 'POL-2026-019', issued: '2026-01-01', expires: '2026-11-20', issuer: '安和保险', location: '书房文件盒', copyLocation: '云盘 / 保单', notes: '续保前确认受益人' },
     { id: 'doc-3', name: '周末房产合同', category: '资产类', holder: '林小满', number: 'PROP-0081', issued: '2024-06-12', expires: '2026-08-10', issuer: '杭城置业', location: '主卧抽屉', copyLocation: '云盘 / 房产', notes: '已过期的合同提醒仅供归档' },
   ],
-  usages: [{ id: 'use-1', documentId: 'doc-1', date: '2026-09-16', purpose: '办理银行业务', borrower: '林小满', status: '借用中', note: '周五归还' }, { id: 'use-2', documentId: 'doc-2', date: '2026-08-11', purpose: '理赔资料', borrower: '林小满', status: '已归还', note: '' }],
+  usages: [{ id: 'use-1', documentId: 'doc-1', date: '2026-09-16', purpose: '办理银行业务', borrower: '林小满', dueDate: '2026-09-19', status: '借用中', note: '周五归还' }, { id: 'use-2', documentId: 'doc-2', date: '2026-08-11', purpose: '理赔资料', borrower: '林小满', dueDate: '2026-08-15', returnedDate: '2026-08-14', status: '已归还', note: '' }],
   policies: [{ id: 'pol-1', company: '安和保险', type: '家庭医疗险', number: 'AH-33001', insured: '林家', expires: '2026-11-20', premium: 2890, payment: '年缴' }],
 }
 export { days }
